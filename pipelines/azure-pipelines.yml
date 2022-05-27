@@ -31,8 +31,13 @@ steps:
   inputs:
     projectDirectory: '$(projectDirectory)'
     generateCodeCoverageReport: true
+- task: PythonScript@0
+  inputs:
+    scriptSource: 'filePath'
+    scriptPath: '$(projectDirectory)/pipelines/lcov_to_cobertura/lcov_cobertura.py'
+    arguments: '$(projectDirectory)/coverage/lcov.info --output $(projectDirectory)/coverage/coverage.xml --demangle'
 - task: PublishCodeCoverageResults@1
   inputs:
-    codeCoverageTool: 'JaCoCo'
-    summaryFileLocation: '$(projectDirectory)/coverage/lcov.info'
+    codeCoverageTool: 'Cobertura'
+    summaryFileLocation: '$(projectDirectory)/coverage/coverage.xml'
     failIfCoverageEmpty: true
