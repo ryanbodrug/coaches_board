@@ -27,3 +27,7 @@ steps:
   inputs:
     target: 'windows'
     projectDirectory: '$(projectDirectory)'
+- task: FlutterTest@0
+  inputs:
+    projectDirectory: '$(projectDirectory)/test'
+    generateCodeCoverageReport: true
