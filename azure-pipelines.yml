@@ -29,5 +29,5 @@ steps:
     projectDirectory: '$(projectDirectory)'
 - task: FlutterTest@0
   inputs:
-    projectDirectory: '$(projectDirectory)/test'
+    projectDirectory: '$(projectDirectory)'
     generateCodeCoverageReport: true
